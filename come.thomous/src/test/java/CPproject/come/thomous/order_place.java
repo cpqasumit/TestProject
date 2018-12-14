@@ -22,7 +22,7 @@ public class order_place {
 		driver.manage().window().maximize();
 		
 		
-		driver.get("https://4seating.com");
+		driver.get("http://dev.4seating.com");
 		driver.findElement(By.xpath("//*[@id=\"nav\"]/li[3]/a/span")).click();
 		
 	    driver.findElement(By.xpath("//*[@id=\"test256\"]/li[2]/div[2]/a/img")).click();
@@ -53,7 +53,7 @@ public class order_place {
 	    
 	 // select  QTY
 	    Select qtyselect = new Select(driver.findElement(By.xpath("//*[@id=\"qty\"]")));
-	    qtyselect.selectByVisibleText("4");
+	    qtyselect.selectByVisibleText("1");
 	  
 	    
 	    
@@ -80,41 +80,33 @@ public class order_place {
 	  
 	   Thread.sleep(2000);
 	   Select dropdown4 = new Select(driver.findElement(By.id("billing:country_id")));
-	    dropdown3.selectByVisibleText("United States");
-	    
+	    dropdown4.selectByVisibleText("United States");
+	    driver.findElement(By.id("billing:telephone")).sendKeys("1234567899");
+        driver.findElement(By.xpath("//*[@id=\"billing-buttons-container\"]/button")).click();
 	  
-	    //driver.findElement(By.id("shipping:telephone")).sendKeys("1234567899");
-	    // driver.findElement(By.xpath("//*[@id='shipping:telephone']")).sendKeys("1234567899");
-	    // driver.findElement(By.cssSelector("input-text  required-entry")).sendKeys("1234567899");
-	    
-	    
-	    
-	    
-	    
-	    
-	    
-	   driver.findElement(By.cssSelector("input[id=billing:telephone]")).sendKeys("1234567899");
-	   
-	   WebElement e=driver.findElement(By.xpath("//*[@id=\"billing:telephone\"]"));
-		WebDriverWait wait= new WebDriverWait(driver,120);
-		wait.until(ExpectedConditions.visibilityOf(e));
-		e.click();
-	   
-	  
-	   // driver.findElement(By.xpath("//*[@id='billing-buttons-container']/button")).click();
-	   driver.findElement(By.id("shipping:telephone")).sendKeys("1234567899");
-	    
-	    
-	   
-	    // Hello this testing  
-	    //select payment  method  
-	    //  p_method_authorizenet
-	    //input-text  required-entry
-	   
-	    
-	   
+        Thread.sleep(2000);
+	    //select payment method  
+         WebElement cbutton = driver.findElement(By.id("p_method_authorizenet"));
+         cbutton.click();
+        driver.findElement(By.xpath("//*[@id=\"authorizenet_cc_number\"]")).sendKeys("4111111111111111");
+        Select card_month = new Select(driver.findElement(By.id("authorizenet_expiration")));
+        card_month.selectByVisibleText("01 - January");
+        
+        Select card_year = new Select (driver.findElement(By.id("authorizenet_expiration_yr")));
+        card_year.selectByVisibleText("2028");
+        
+        
+        driver.findElement(By.id("authorizenet_cc_cid")).sendKeys("123");
+        driver.findElement(By.xpath("//*[@id=\"payment-buttons-container\"]/button/span/span")).click();
 	      
-	   //   driver.quit();
+        
+        //add comment to the check out page  
+        
+        Thread.sleep(10000);
+        driver.findElement(By.id("ordercomment-comment")).sendKeys("CP TEST PLEASE DO NOT PROCESS 1");
+        driver.findElement(By.xpath("//*[@id=\"review-buttons-container\"]/button/span/span")).click();
+        
+	     //driver.quit();
 	    
 	    
 	    
