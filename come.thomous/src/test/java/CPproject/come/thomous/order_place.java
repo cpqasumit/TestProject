@@ -105,8 +105,10 @@ public class order_place {
 	   driver.findElement(By.id("shipping:telephone")).sendKeys("1234567899");
 	    
 	    
+	   
+	    // Hello this testing  
 	    //select payment  method  
-	  //  p_method_authorizenet
+	    //  p_method_authorizenet
 	    //input-text  required-entry
 	   
 	    
