@@ -1,7 +1,12 @@
 package CPproject.come.thomous;
 
-import org.openqa.selenium.By;
+import java.io.File;
+import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +27,7 @@ public class order_place {
 		driver.manage().window().maximize();
 		
 		
-		driver.get("http://dev.4seating.com");
+		driver.get("http://beta.4seating.com/");
 		driver.findElement(By.xpath("//*[@id=\"nav\"]/li[3]/a/span")).click();
 		
 	    driver.findElement(By.xpath("//*[@id=\"test256\"]/li[2]/div[2]/a/img")).click();
@@ -106,7 +111,20 @@ public class order_place {
         driver.findElement(By.id("ordercomment-comment")).sendKeys("CP TEST PLEASE DO NOT PROCESS 1");
         driver.findElement(By.xpath("//*[@id=\"review-buttons-container\"]/button/span/span")).click();
         
-	     //driver.quit();
+        
+        // capture screenshot  
+       
+        Thread.sleep(10000);
+        File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+			FileUtils.copyFile(screenshotFile, new File("D:\\Sumit_New\\Project\\T\\thomous\\orderscreenshot\\orderid.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+       
+	     driver.quit();
 	    
 	    
 	    
