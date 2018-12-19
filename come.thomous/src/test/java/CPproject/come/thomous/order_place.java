@@ -60,12 +60,36 @@ public class order_place {
 	    Select qtyselect = new Select(driver.findElement(By.xpath("//*[@id=\"qty\"]")));
 	    qtyselect.selectByVisibleText("1");
 	  
+	    Thread.sleep(5000);
+        File screenshotFile2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+			FileUtils.copyFile(screenshotFile2, new File("D:\\Sumit_New\\Project\\T\\thomous\\orderscreenshot\\TotalPrice.png"));
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		} 
+	    
+	    
+	    
+	    
+	    
+	    
 	    
 	    
 	    // Add to cart 
 	    Thread.sleep(2000);
 	  // driver.findElement(By.linkText("Add to Cart")).click();
 	     driver.findElement(By.xpath("//*[@id=\"iframeProductCart\"]/div/div[4]/div/div/div[2]/button")).click();
+	     
+	     
+	     Thread.sleep(5000);
+	        File screenshotFile1 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	        try {
+				FileUtils.copyFile(screenshotFile1, new File("D:\\Sumit_New\\Project\\T\\thomous\\orderscreenshot\\addtocart.png"));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 	      
 	      
 	      
